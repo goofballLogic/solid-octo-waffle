@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "npx webpack --watch",
-    "build": "npx webpack"
+    "dev": "npx webpack-dev-server",
+    "build": "npx webpack --config webpack.production.config.js"
   },
   "author": "goofballLogic",
   "license": "MIT",
@@ -16,10 +16,12 @@
     "babel-loader": "^7.1.4",
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
+    "react-hot-loader": "^4.1.2",
     "tc2-react-good-bad-tracker": "0.0.2",
     "tc2-react-time-series-graph": "0.0.12",
     "webpack": "^4.7.0",
-    "webpack-cli": "^2.1.2"
+    "webpack-cli": "^2.1.2",
+    "webpack-dev-server": "^3.1.4"
   },
   "private": true
 }
