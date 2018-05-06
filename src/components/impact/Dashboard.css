@@ -1,11 +1,16 @@
 .impact-dashboard .under-construction {
 
     padding: 40px;
+    text-align: center;
+    border: black 1px dashed;
+    border-radius: 10px;
+    margin: 10px 0;
+    min-height: 500px;
 
 }
 .impact-dashboard .under-construction svg {
 
-    max-width: 100px;
+    max-height: 75px;
     margin: 10px 0;
     display: block;
 

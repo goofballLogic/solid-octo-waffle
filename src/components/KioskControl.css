@@ -6,6 +6,7 @@
     top: 0;
     left: 0;
     background-color: white;
+    padding: 10px;
 
 }
 .experimenz-ots .kiosk-control {
@@ -13,6 +14,11 @@
     flex-basis: auto;
     flex: 0;
     display: block;
+
+}
+.experimenz-ots .kiosk a:not(.kiosk-control) {
+
+    display: none;
 
 }
 .experimenz-ots .kiosk-control svg {
