@@ -1,23 +1,23 @@
-.experimenz-ots {
-
-    font-size: 10pt;
-    
-}
-.experimenz-ots * {
-
-    box-sizing: border-box !important;
-    
-}
 .experimenz-ots.error-state input:checked + label + .detail {
 
-    max-height: 300px;
-    transition: 0.2s;
+    max-height: 500px;
+    transition: none;
+
+}
+.experimenz-ots.error-state label {
+
+    margin: 0 0 30px 0;
 
 }
 .experimenz-ots.error-state .detail {
 
     max-height: 0;
-    overflow: auto;
-    transition: 0.2s;
+    overflow-y: auto;
+    transition: 0.3s;
+
+}
+.experimenz-ots.error-state input {
+
+    display: none;
 
 }

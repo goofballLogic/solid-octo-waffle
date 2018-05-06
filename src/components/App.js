@@ -32,7 +32,7 @@ class App extends Component {
                 ? <div className="experimenz-ots error-state">
                     <h2>An error occurred</h2>
                     <input id="error-state-collapsible" type="checkbox" />
-                    <label for="error-state-collapsible">Details</label>
+                    <label className="btn error" for="error-state-collapsible">Details</label>
                     <div className="detail">
                         <pre>{ this.state.error.stack }</pre>
                         <pre>{ this.state.info.componentStack }</pre>

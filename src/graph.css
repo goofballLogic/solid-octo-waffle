@@ -1,0 +1,139 @@
+
+.experimenz-ots .graph,
+.experimenz-ots .graph td,
+.experimenz-ots .graph th {
+
+    font-size: 9pt;
+
+}
+.experimenz-ots .graph path {
+
+    stroke-width: 4;
+
+}
+.experimenz-ots .graph + .graph {
+
+    margin-top: 20px;
+
+}
+.experimenz-ots .graph .scores * {
+    
+    line-height: 2em;
+
+}
+.experimenz-ots .graph .swatch {
+
+    display: inline-block;
+    margin-right: 10px;
+    width: 1em;
+    height: 1em;
+    vertical-align: top;
+    margin-top: 0.4em;
+}
+.experimenz-ots .graph .streaks {
+
+    padding-left: 60px;
+
+
+}
+.experimenz-ots .graph .streaks * {
+
+    font-size: 10pt;
+
+}
+.experimenz-ots .graph .streaks .visual-sizer {
+
+    width: 200px;
+
+}
+.experimenz-ots .graph .streaks .visual-sizer span.up {
+    
+    background: linear-gradient(to right, transparent, red);
+    display: inline-block;
+    height: 3px;
+
+}
+.experimenz-ots .graph table {
+
+    border-collapse: collapse;
+
+}
+.experimenz-ots .graph td {
+
+    line-height: 2em;
+    padding: 5px 5px;
+    
+}
+.experimenz-ots .graph .tooltip {
+
+    background-color: rgba( 255, 255, 255, 0.9 );
+    box-shadow: 3px 3px 1px 1px silver;
+    padding: 10px;
+    min-width: 150px;
+    text-align: center;
+    border: solid 1px black;
+    
+}
+.experimenz-ots .graph .tooltip p {
+
+    margin: 0;
+    font-size: 1.2em;
+    line-height: 1.5;
+
+}
+.experimenz-ots .graph .tooltip .when {
+
+    background-color: black;
+    color: white;
+    padding: 10px;
+    margin: -10px -10px 5px -10px;
+
+}
+.experimenz-ots .graph .tooltip .scores {
+
+    display: flex;
+    white-space: nowrap;
+
+}
+.experimenz-ots .graph .tooltip .scores .score-name,
+.experimenz-ots .graph .tooltip .scores .score-score {
+
+    flex: 1;
+    text-align: left;
+
+}
+.experimenz-ots .graph .tooltip .scores .score-score {
+
+    text-align: right;
+
+}
+.experimenz-ots .graph tr.detail > td {
+
+    display: none;
+
+}
+.experimenz-ots .graph tr.detail.selected > td {
+
+    display: table-cell;
+
+}
+.experimenz-ots .graph .up {
+
+    background-color: #EEFFEE;
+
+}
+.experimenz-ots .graph .down {
+
+    background-color: #FFEEEE;
+
+}
+.experimenz-ots .graph tr.master:hover {
+
+    background-color: #EEE;
+
+}
+.experimenz-ots .garph .significant {
+
+    font-weight: bold;
+
+}

@@ -12,8 +12,10 @@
 .experimenz-ots .kiosk-control {
 
     flex-basis: auto;
+    min-width: 0;
     flex: 0;
     display: block;
+    margin-left: 0;
 
 }
 .experimenz-ots .kiosk a:not(.kiosk-control) {

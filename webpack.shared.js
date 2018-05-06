@@ -12,7 +12,7 @@ module.exports = {
         "react": "React",
         "react-dom": "ReactDOM",
         "recharts": "Recharts"
-        
+
     }
 
 };

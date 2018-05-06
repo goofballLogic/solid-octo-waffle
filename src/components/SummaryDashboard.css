@@ -1,21 +1,18 @@
 .summary-dashboard {
 
     display: flex;
+    flex-wrap: wrap;
 
 }
 .summary-dashboard > * {
 
     flex: 1;
+    flex-basis: 450px;
+    min-width: 450px;
 
 }
 .summary-dashboard > * + * {
 
     margin-left: 40px;
     
-}
-h3 {
-
-    margin-top: 2em;
-    line-height: 1em;
-    margin-bottom: 1em;
 }

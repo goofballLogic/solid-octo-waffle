@@ -1,0 +1,30 @@
+.impact-summary h1 {
+
+    position: relative;
+
+}
+.impact-summary h1 .btn {
+    
+    right: 0;
+    top: -0.4em;
+    position: absolute;
+
+}
+.impact-summary .under-construction {
+
+    padding: 40px;
+    text-align: center;
+    border: black 1px dashed;
+    border-radius: 10px;
+    margin: 10px 0;
+    min-height: 500px;
+    opacity: 0.2;
+
+}
+.impact-summary .under-construction svg {
+
+    max-height: 100px;
+    margin: 10px 0;
+    display: block;
+
+}

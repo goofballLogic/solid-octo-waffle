@@ -1,22 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { TimeSeriesGraph, TimeSeriesStreaks, sequentialUpStreakSums } from "tc2-react-time-series-graph";
-import moment from "moment";
+import format from "date-fns/format";
+
 import "./Summary.css";
 
-const simpleDateFormat = x => moment( new Date( x ) ).format( "dddd, MMM Do" );
-const elaborateDateFormat = x => moment( new Date( x ) ).format( "dddd, MMMM Do, YYYY" );
+const simpleDateFormat = x => format( new Date( x ), "dddd, MMM Do" );
+const elaborateDateFormat = x => format( new Date( x ), "dddd, MMMM Do, YYYY" );
+
 const Summary = ( { data, series, events } ) => <article className="team-summary">
-
-    <header>
-
-        <h2>Team performance</h2>
-        <nav>
-            <Link to="/team">Open</Link>
-        </nav>
-
-    </header>
-    <h3>Improvment over time</h3>
+      
+    <h2>Improvment over time</h2>
     <div className="graph">
 
         <TimeSeriesGraph
@@ -26,7 +20,7 @@ const Summary = ( { data, series, events } ) => <article className="team-summary
             formatTooltipDate={ elaborateDateFormat } />
 
     </div>
-    <h3>Biggest continuous improvment</h3>
+    <h2>Biggest continuous improvment</h2>
     <div className="graph">
 
         <TimeSeriesStreaks
@@ -35,7 +29,7 @@ const Summary = ( { data, series, events } ) => <article className="team-summary
             strategy={sequentialUpStreakSums} />
 
     </div>
-    <h3>Longest period of improvement</h3>
+    <h2>Longest period of improvement</h2>
     <div className="graph">
 
         <TimeSeriesStreaks

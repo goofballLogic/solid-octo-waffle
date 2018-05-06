@@ -1,0 +1,14 @@
+.experimenz-ots .icon svg {
+
+    max-height: 1em;
+    max-width: 1em;
+    stroke: white;
+    fill: white;
+    
+}
+.experimenz-ots .btn--disabled .icon svg {
+
+    stroke: silver;
+    fill: silver;
+    
+}

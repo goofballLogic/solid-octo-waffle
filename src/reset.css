@@ -1,0 +1,25 @@
+.experimenz-ots {
+
+    font-size: 10pt;
+    
+}
+.experimenz-ots h1,
+.experimenz-ots article h1 {
+
+    font-size: 2em;
+
+}
+.experimenz-ots h1,
+.experimenz-ots h2,
+.experimenz-ots h3 {
+
+    margin-top: 2em;
+    line-height: 1em;
+    margin-bottom: 1em;
+
+}
+.experimenz-ots * {
+
+    box-sizing: border-box !important;
+    
+}

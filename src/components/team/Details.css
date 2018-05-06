@@ -1,0 +1,26 @@
+.team-details .graph-enhancements {
+
+    display: flex;
+
+}
+.team-details .graph-enhancements > * {
+
+    flex-basis: 450px;
+    flex-wrap: wrap;
+
+}
+.experimenz-ots .event-listing table {
+
+    border-collapse: collapse;
+    min-width: 450px;
+
+}
+.experimenz-ots .event-listing .graph td,
+.experimenz-ots .event-listing .graph th {
+
+    padding: 10px 10px;
+    line-height: 2em;
+    border: solid 1px #CCC;
+    white-space: nowrap;
+
+}

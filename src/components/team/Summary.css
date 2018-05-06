@@ -1,109 +1,12 @@
-.team-summary header {
+.team-summary h1 {
 
-    display: flex;
+    position: relative;
 
 }
-.team-summary header * {
-
-    flex: 1;
+.team-summary h1 a {
     
-}
-.team-summary nav {
+    right: 0;
+    top: -0.4em;
+    position: absolute;
 
-    flex: 0;
-
-}
-.team-summary .graph {
-
-    font-size: 9pt;
-
-}
-.team-summary .graph path {
-
-    stroke-width: 4;
-
-}
-.team-summary .graph + .graph {
-
-    margin-top: 20px;
-
-}
-.team-summary .graph .scores * {
-    
-    line-height: 2em;
-
-}
-.team-summary .graph .swatch {
-
-    display: inline-block;
-    margin-right: 10px;
-    width: 1em;
-    height: 1em;
-    vertical-align: top;
-    margin-top: 0.4em;
-}
-.team-summary .graph .streaks {
-
-    padding-left: 60px;
-
-
-}
-.team-summary .graph .streaks * {
-
-    font-size: 10pt;
-
-}
-.team-summary .graph .streaks .visual-sizer {
-
-    width: 200px;
-
-}
-.team-summary .graph .streaks .visual-sizer span.up {
-    
-    background: linear-gradient(to right, transparent, red);
-    display: inline-block;
-    height: 3px;
-
-}
-.team-summary .graph table {
-
-    border-collapse: collapse;
-
-}
-.team-summary .graph td {
-
-    line-height: 2em;
-    padding: 5px 5px;
-    
-}
-.team-summary .graph .tooltip {
-    background-color: rgba( 255, 255, 255, 0.9 );
-    box-shadow: 3px 3px 1px 1px silver;
-    padding: 10px;
-    min-width: 150px;
-    text-align: center;
-    border: solid 1px black;
-}
-.team-summary .graph .tooltip p {
-    margin: 0;
-    font-size: 1.2em;
-    line-height: 1.5;
-}
-.team-summary .graph .tooltip .when {
-    background-color: black;
-    color: white;
-    padding: 10px;
-    margin: -10px -10px 5px -10px;
-}
-.team-summary .graph .tooltip .scores {
-    display: flex;
-    white-space: nowrap;
-}
-.team-summary .graph .tooltip .scores .score-name,
-.team-summary .graph .tooltip .scores .score-score {
-    flex: 1;
-    text-align: left;
-}
-.team-summary .graph .tooltip .scores .score-score {
-    text-align: right;
 }
