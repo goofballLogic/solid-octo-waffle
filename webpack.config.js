@@ -1,5 +1,6 @@
 const path = require( "path" );
 const webpack = require( "webpack" );
+const shared = require( "./webpack.shared.js" );
 
 module.exports = [ {
 
@@ -24,19 +25,10 @@ module.exports = [ {
     },
     module: {
     
-        rules: [
-        
-            { test: /\.js$/, exclude: /node_modules/, loader: "babel-loader" }
-        
-        ]
+        rules: shared.rules
       
     },
-    externals: {
-
-        "react": "React",
-        "react-dom": "ReactDOM"
-
-    },
+    externals: shared.externals,
     plugins: [
     
         new webpack.NamedModulesPlugin(),

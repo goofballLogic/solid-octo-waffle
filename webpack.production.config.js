@@ -1,6 +1,6 @@
 const path = require( "path" );
 const { version } = require('./package.json');
-
+const shared = require( "./webpack.shared.js" );
 const baseConfig = require( "./webpack.config" );
 
 module.exports = baseConfig.concat( {
@@ -15,18 +15,9 @@ module.exports = baseConfig.concat( {
     },
     module: {
     
-        rules: [
-        
-            { test: /\.js$/, exclude: /node_modules/, loader: "babel-loader" }
-        
-        ]
+        rules: shared.rules
       
     },
-    externals: {
-
-        "react": "React",
-        "react-dom": "ReactDOM"
-
-    }
+    externals: shared.externals
 
 } );

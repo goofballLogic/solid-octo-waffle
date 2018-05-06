@@ -1,0 +1,10 @@
+.team-dashboard {
+
+    display: flex;
+
+}
+.team-dashboard > * {
+
+    flex: 1;
+
+}

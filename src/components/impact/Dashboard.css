@@ -1,0 +1,12 @@
+.impact-dashboard .under-construction {
+
+    padding: 40px;
+
+}
+.impact-dashboard .under-construction svg {
+
+    max-width: 100px;
+    margin: 10px 0;
+    display: block;
+
+}

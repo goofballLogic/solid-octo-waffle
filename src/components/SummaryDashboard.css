@@ -1,0 +1,15 @@
+.summary-dashboard {
+
+    display: flex;
+
+}
+.summary-dashboard > * {
+
+    flex: 1;
+
+}
+.summary-dashboard > * + * {
+
+    margin-left: 10px;
+    
+}

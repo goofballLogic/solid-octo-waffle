@@ -1,0 +1,15 @@
+.team-dashboard {
+
+    display: flex;
+
+}
+.team-dashboard > * {
+
+    flex: 1;
+    
+}
+.team-dashboard nav {
+
+    flex: 0;
+
+}
