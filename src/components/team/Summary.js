@@ -26,14 +26,21 @@ const Summary = ( { data, series, events } ) => <article className="team-summary
             formatTooltipDate={ elaborateDateFormat } />
 
     </div>
-    <h3>Biggest improement streak</h3>
+    <h3>Biggest continuous improvment</h3>
     <div className="graph">
 
         <TimeSeriesStreaks
             data={data}
             series={series}
-            events={events}
             strategy={sequentialUpStreakSums} />
+
+    </div>
+    <h3>Longest period of improvement</h3>
+    <div className="graph">
+
+        <TimeSeriesStreaks
+            data={data}
+            series={series} />
 
     </div>
 
