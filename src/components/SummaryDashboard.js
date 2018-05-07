@@ -9,8 +9,8 @@ import { NavButtonRight } from "./Material";
 import "./SummaryDashboard.css";
 import GoRight from "../svg/go-right.svg";
 
-const SummaryDashboard = ( { kiosk, team, events } ) => 
-    
+const SummaryDashboard = ( { kiosk, team, events } ) =>
+   
     <div className={ `summary-dashboard${kiosk ? " kiosk" : ""}` }>
 
         <Impact />

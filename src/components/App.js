@@ -13,6 +13,7 @@ class App extends Component {
 
         super();
         this.state = {};
+        setTimeout( () => this.setState( { rerender: new Date() } ), 1000 );
 
     }
 

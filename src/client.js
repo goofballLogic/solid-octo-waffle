@@ -16,9 +16,14 @@ function renderBySelector( selector, data ) {
 
 }
 
-document.body.dispatchEvent( new CustomEvent( "OTS.ready", {
+window.addEventListener( "DOMContentLoaded", () => {
 
-    detail: { render: renderBySelector },
-    bubbles: true
+    console.log( "Sending OTS.ready" );
+    document.body.dispatchEvent( new CustomEvent( "OTS.ready", {
 
-} ) );
+        detail: { render: renderBySelector },
+        bubbles: true
+
+    } ) );
+
+} );

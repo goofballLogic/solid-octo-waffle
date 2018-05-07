@@ -2,15 +2,16 @@ import { Link } from "react-router-dom";
 
 import "./Material.css";
 
-export const FloatButton = ( { children } ) => <div className="btn--floating accent btn--small btn--fixed btn--right btn--top btn">
+export const FloatNavButton = ( { text, to, children } ) => <Link to={to} title={text} className="btn--floating btn--fixed accent btn--small btn--right btn--top btn">
 
     <div className="btn__content">
 
-        <i className="icon">{children}</i>
-    
+        {text}
+        <i className={`icon${text ? " icon--right" : ""}`}>{children}</i>
+
     </div>
 
-</div>;
+</Link>;
 
 export const ButtonRight = ( { text, children } ) => <div className="btn primary">
 

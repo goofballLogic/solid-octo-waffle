@@ -4,19 +4,14 @@ import { Link } from "react-router-dom";
 import "./KioskControl.css";
 import Expand from "../svg/expand.svg";
 import Collapse from "../svg/collapse.svg";
-import { FloatButton } from "./Material";
+import { FloatNavButton, NavButtonRight } from "./Material";
 
-const KioskControl = ( { kiosk, big, small } ) => kiosk
+const KioskControl = ( { kiosk, big, small } ) => <div className="kiosk-control">
 
-    ? <Link className="kiosk-control" to={small} title="collapse">
-    
-        <FloatButton><Collapse /></FloatButton>
-        
-    </Link>
-    : <Link className="kiosk-control" to={big} title="expand">
+    {kiosk
+        ? <FloatNavButton to={small} title="collapse"><Collapse /></FloatNavButton>
+        : <NavButtonRight to={big} text="Expand"><Expand /></NavButtonRight>}
 
-        <FloatButton><Expand /></FloatButton>
-
-    </Link>;
+</div>;
 
 export default KioskControl;
