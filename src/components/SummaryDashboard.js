@@ -13,6 +13,7 @@ const SummaryDashboard = ( { kiosk, team, events } ) =>
    
     <div className={ `summary-dashboard${kiosk ? " kiosk" : ""}` }>
 
+        <KioskControl kiosk={ kiosk } big="/kiosk" small="/" />
         <Impact />
         <div>
             <h1>
@@ -23,7 +24,6 @@ const SummaryDashboard = ( { kiosk, team, events } ) =>
             </h1>  
             <Team series={ team } data={ accumulate( events ) } events={ events } />
         </div>
-        <KioskControl kiosk={ kiosk } big="/kiosk" small="/" />
 
     </div>;
 

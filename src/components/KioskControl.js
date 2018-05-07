@@ -9,8 +9,8 @@ import { FloatNavButton, NavButtonRight } from "./Material";
 const KioskControl = ( { kiosk, big, small } ) => <div className="kiosk-control">
 
     {kiosk
-        ? <FloatNavButton to={small} title="collapse"><Collapse /></FloatNavButton>
-        : <NavButtonRight to={big} text="Expand"><Expand /></NavButtonRight>}
+        ? <FloatNavButton to={small} text="collapse"><Collapse /></FloatNavButton>
+        : <FloatNavButton to={big} text="Expand"><Expand /></FloatNavButton>}
 
 </div>;
 

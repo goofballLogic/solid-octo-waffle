@@ -6,8 +6,7 @@ export const FloatNavButton = ( { text, to, children } ) => <Link to={to} title=
 
     <div className="btn__content">
 
-        {text}
-        <i className={`icon${text ? " icon--right" : ""}`}>{children}</i>
+        <i className="icon">{children}</i>
 
     </div>
 

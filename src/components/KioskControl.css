@@ -10,16 +10,25 @@
     z-index: 10;
 
 }
-.experimenz-ots .kiosk-control {
+.experimenz-ots .kiosk-control  {
 
-    margin: 40px;
+    position: absolute;
 
 }
-.experimenz-ots .kiosk .kiosk-control  {
+.experimenz-ots .kiosk-control .btn {
 
-    position: fixed;
-    top: 10px;
-    right: 10px;
+    top: 100px;
+
+}
+.experimenz-ots .kiosk .kiosk-control .btn {
+
+    top: 16px;
+    
+}
+.experimenz-ots .kiosk-control svg {
+
+    height: 1em;
+    width: 1em;
 
 }
 .experimenz-ots .kiosk .btn {
@@ -30,11 +39,5 @@
 .experimenz-ots .kiosk .kiosk-control .btn {
 
     display: inline-flex;
-
-}
-.experimenz-ots .kiosk-control svg {
-
-    height: 1em;
-    width: 1em;
 
 }
