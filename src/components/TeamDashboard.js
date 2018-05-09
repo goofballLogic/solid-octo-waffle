@@ -10,11 +10,12 @@ import Details from "./team/Details";
 import "./TeamDashboard.css";
 import GoLeft from "../svg/go-left.svg";
 
-const latest = events => new Date( [ ...events ].sort( 
+const maybeLatest = events => [ ...events ].sort( 
     
     ( a, b ) => ( new Date( a.when ).valueOf() - new Date( b.when ).valueOf() ) 
 
-)[ 0 ].when );
+)[ 0 ];
+const maybeFormat = ( x, pattern ) => x ? format( x, pattern ) : "none";
 
 const TeamDashboard = ( { kiosk, events, team } ) => <div className={ `team-dashboard${kiosk ? " kiosk" : ""}` }>
 
@@ -26,7 +27,7 @@ const TeamDashboard = ( { kiosk, events, team } ) => <div className={ `team-dash
     </h1>
     <h2>
 
-        Last updated: { format( latest( events ), "dddd [the] Do [of] MMMM YYYY" ) }
+        Last updated: { maybeFormat( maybeLatest( events ), "dddd [the] Do [of] MMMM YYYY" ) }
         <NavButton to="/team/update" text="Update" />
     
     </h2>
