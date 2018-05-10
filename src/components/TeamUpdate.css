@@ -1,4 +1,9 @@
 
+.experimenz-ots .team-update {
+
+    --background-color-up: #EFE;
+    --background-color-down: #FEE;
+}
 .experimenz-ots .team-update .choice input {
 
     position: absolute;
@@ -31,6 +36,38 @@
     display: block;
     max-width: 700px;
 
+}
+.experimenz-ots .team-update .choice-content .score {
+
+    display: none;
+
+}
+.experimenz-ots .team-update .choice-content .score.true {
+
+    display: inline-block;
+    padding: 0 5px;
+    margin-right: 5px;
+
+}
+.experimenz-ots .team-update .choice-content .score.up {
+
+    background-color: var(--background-color-up);
+
+}
+.experimenz-ots .team-update .choice-content .score.up::before {
+
+    content: "+";
+
+}
+.experimenz-ots .team-update .choice-content .score.down {
+
+    background-color: var(--background-color-down);
+
+}
+.experimenz-ots .team-update .choice-content .score.down::before {
+
+    content: "-";
+    
 }
 .experimenz-ots .team-update .choice-content .btn {
 
@@ -79,6 +116,94 @@
     flex: 0;
     margin: 10px 0 0 0;
     flex-basis: auto;
-    width: 100px;
+    width: 150px;
+
+}
+.experimenz-ots .team-update .one-of-option {
+
+    display: inline-block;
+
+}
+.experimenz-ots .team-update .one-of-option .content {
+
+    display: block;
+
+}
+.experimenz-ots .team-update .one-of-option input {
+
+    position: absolute;
+    left: -2000px;
+
+}
+.experimenz-ots .team-update .one-of-option .content {
+
+    fill: #EEE;
+    transform: scale(0.5);
+
+}
+.experimenz-ots .team-update .one-of-option .content:hover,
+.experimenz-ots .team-update .one-of-option input:focus+.content {
+
+    transform: scale(1);
+
+}
+.experimenz-ots .team-update .one-of-option-down input:checked+.content {
+
+    fill: red;
+    transform: scale(1);
+
+}
+.experimenz-ots .team-update .one-of-option-up input:checked+.content {
+
+    fill: green;
+    transform: scale(1);
+
+}
+.experimenz-ots .team-update .one-of-option svg {
+
+    width: 30px;
+
+}
+.experimenz-ots .team-update .scoring td {
+
+    padding: 0 5px;
+
+}
+.experimenz-ots .team-update .score-diff .down {
+
+    display: block;
+    background-color: var(--background-color-down);
+    padding: 0 5px;
+    min-width: 2em;
+    text-align: right;
+
+}
+.experimenz-ots .team-update .score-diff .down::before {
+
+    content: "- ";
+
+}
+.experimenz-ots .team-update .score-diff .up {
+
+    display: block;
+    background-color: var(--background-color-up);
+    padding: 0 5px;
+    min-width: 2em;
+    text-align: right;
+
+}
+.experimenz-ots .team-update .score-diff .up::before {
+
+    content: "+ ";
+    
+}
+.experimenz-ots .team-update .score-result {
+
+    min-width: 3em;
+    text-align: right;
+}
+.experimenz-ots .team-update .score-result span::before {
+
+    content: "= ";
 
 }

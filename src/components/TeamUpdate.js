@@ -30,52 +30,83 @@ var behaviours = [ {
     id: "behaviour1",
     roleId: "role1",
     title: "Role 1 Behaviour 1",
-    description: "Ut sed quam sed purus fermentum imperdiet non ac quam. Morbi pellentesque gravida vehicula. Suspendisse libero metus, bibendum ut nisi ut, consequat condimentum urna."
-
+    description: "Ut sed quam sed purus fermentum imperdiet non ac quam. Morbi pellentesque gravida vehicula. Suspendisse libero metus, bibendum ut nisi ut, consequat condimentum urna.",
+    
 }, {
 
     id: "behaviour2",
     roleId: "role1",
     title: "Role 1 Behaviour 2",
-    description: "Maecenas metus diam, luctus non pulvinar ac, rhoncus et eros. Donec eleifend ex nisl, a laoreet dolor viverra varius."
+    description: "Maecenas metus diam, luctus non pulvinar ac, rhoncus et eros. Donec eleifend ex nisl, a laoreet dolor viverra varius.",
+    upScore: Math.floor( Math.random() * 3 ) || 1,
+    downScore: Math.floor( Math.random() * 3 ) || undefined
 
 }, {
 
     id: "behaviour3",
     roleId: "role1",
     title: "Role 1 Behaviour 3",
-    description: "Duis odio velit, mollis id dolor a, maximus vehicula justo."
+    description: "Duis odio velit, mollis id dolor a, maximus vehicula justo.",
+    upScore: Math.floor( Math.random() * 3 ) || 1,
+    downScore: Math.floor( Math.random() * 3 ) || undefined
 
 }, {
 
     id: "behaviour4",
     roleId: "role2",
     title: "Role 2 Behaviour 1",
-    description: "Fusce hendrerit felis sit amet risus aliquam luctus."
+    description: "Fusce hendrerit felis sit amet risus aliquam luctus.",
+    upScore: Math.floor( Math.random() * 3 ) || 1,
+    downScore: Math.floor( Math.random() * 3 ) || undefined
 
 }, {
 
     id: "behaviour5",
     roleId: "role2",
     title: "Role 2 Behaviour 2",
-    description: "Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos."
+    description: "Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.",
+    upScore: Math.floor( Math.random() * 3 ) || 1,
+    downScore: Math.floor( Math.random() * 3 ) || undefined
 
 }, {
 
     id: "behaviour6",
     roleId: "role3",
     title: "Role 3 Behaviour 1",
-    description: "Sed in placerat mi, sit amet pellentesque magna. Vestibulum malesuada lacus non consectetur suscipit."
+    description: "Sed in placerat mi, sit amet pellentesque magna. Vestibulum malesuada lacus non consectetur suscipit.",
+    upScore: Math.floor( Math.random() * 3 ) || 1,
+    downScore: Math.floor( Math.random() * 3 ) || undefined
 
 }, {
 
     id: "behaviour7",
     roleId: "role3",
     title: "Role 3 Behaviour 2",
-    description: "Ut quis elit diam. Duis ultricies hendrerit libero vitae sodales. Vestibulum cursus tortor pulvinar ipsum pharetra faucibus. Nam et purus eu augue condimentum volutpat sed sed neque. Donec sodales feugiat laoreet."
+    description: "Ut quis elit diam. Duis ultricies hendrerit libero vitae sodales. Vestibulum cursus tortor pulvinar ipsum pharetra faucibus. Nam et purus eu augue condimentum volutpat sed sed neque. Donec sodales feugiat laoreet.",
+    upScore: Math.floor( Math.random() * 3 ) || 1,
+    downScore: Math.floor( Math.random() * 3 ) || undefined
 
-}, ]
-const behaviourTemplate = [ "title", "description" ];
+} ];
+
+const behaviourTemplate = [ 
+    
+    "title", 
+    "description",
+    { 
+                
+        "key": "up",
+        "prop": "upScore",
+        "className": "score {key} {truthiness}"
+        
+    },
+    { 
+        "key": "down",
+        "prop": "downScore",
+        "className": "score {key} {truthiness}"
+        
+    } 
+
+];
 
 function decorateMenuClasses( className ) {
 
@@ -145,10 +176,9 @@ class TeamUpdate extends Component {
                         decorate={ decorateMenuClasses } />
 
             </div> }
-            {console.log( 11 )}
-            { (!this.state.behaviour) ? null : <div className="picker">
+            { !this.state.behaviour ? null : <div className="picker">
             
-                <h3>Assessment</h3>
+                <h2>Assessment</h2>
                 <Scoring    target={ this.state.behaviour }
                             scorees={ this.props.team.map( x => ( { ...x, score: 0 } ) ) }
                             handleChange={ selected => console.log( selected ) } />
