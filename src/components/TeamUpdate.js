@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import { Menu, Scoring } from "tc2-react-good-bad-tracker";
 import { NavButtonLeft } from "./Material";
 import GoLeft from "../svg/go-left.svg";
+import PendingChanges from "./PendingChanges";
+
 import "./TeamUpdate.css";
 
 var roles = [ { 
@@ -36,7 +38,7 @@ var behaviours = [ {
 
     id: "behaviour2",
     roleId: "role1",
-    title: "Role 1 Behaviour 2",
+    title: "Role 1 Behaviour 2 which has a long title which might not fit in",
     description: "Maecenas metus diam, luctus non pulvinar ac, rhoncus et eros. Donec eleifend ex nisl, a laoreet dolor viverra varius.",
     upScore: Math.floor( Math.random() * 3 ) || 1,
     downScore: Math.floor( Math.random() * 3 ) || undefined
@@ -148,6 +150,22 @@ class TeamUpdate extends Component {
         this.setState( { behaviour } );
 
     }
+    handleScoringChange( scores ) {
+
+        const { behaviour } = this.state;
+        const pending = this.state.pending || {};
+        if( scores && Object.values( scores ).filter( x => x ).length ) {
+
+            pending[ behaviour.id ] = JSON.parse( JSON.stringify( scores ) );
+
+        } else {
+
+            delete pending[ behaviour.id ];
+
+        }
+        this.setState( { pending } );
+        
+    }
     componentClassName() {
 
         const { role, behaviour } = this.state;
@@ -159,6 +177,7 @@ class TeamUpdate extends Component {
     }
     render() {
 
+        const hasPending = this.state.pending && ( Object.keys( this.state.pending ).length > 0 );
         return <div className={this.componentClassName()}>
 
             <h1>
@@ -166,7 +185,12 @@ class TeamUpdate extends Component {
                 Assess team performance
                 <NavButtonLeft to="/team" text="Back"><GoLeft /></NavButtonLeft>
 
-            </h1>
+            </h1> 
+            <div className={`pending-events${hasPending ? " pending-events-populated" : "" }`}>
+
+                <PendingChanges pending={ this.state.pending } behaviours={ behaviours } />
+                
+            </div>
             <div className="picker role-picker">
 
                 <h2>Role</h2>
@@ -192,10 +216,10 @@ class TeamUpdate extends Component {
                 <h2>Assessment</h2>
                 <Scoring    target={ this.state.behaviour }
                             scorees={ this.props.team.map( x => ( { ...x, score: 0 } ) ) }
-                            handleChange={ selected => console.log( selected ) } />
+                            handleChange={ this.handleScoringChange.bind( this ) } />
 
             </div> }
-        
+
         </div>;
 
     }

@@ -201,3 +201,22 @@
     text-align: right;
 
 }
+
+.experimenz-ots .team-update .pending-events {
+
+    float: right;
+    width: 300px;
+    margin-left: 20px;
+    height: 100%;
+
+}
+.experimenz-ots .team-update .pending-events .pending-changes {
+
+    display: none;
+
+}
+.experimenz-ots .team-update .pending-events-populated .pending-changes {
+
+    display: block;
+
+}
