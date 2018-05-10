@@ -131,6 +131,7 @@ class TeamUpdate extends Component {
     }
     handleRoleChange( e, role ) {
 
+        if ( this.state.role ) { return e.preventDefault(); }
         const roleBehaviours = role ? behaviours.filter( x => x.roleId === role.id ) : undefined;
         this.setState( { 
 
@@ -143,12 +144,22 @@ class TeamUpdate extends Component {
     }
     handleBehaviourChange( e, behaviour ) {
 
+        if ( this.state.behaviour ) { return e.preventDefault(); }
         this.setState( { behaviour } );
 
     }
+    componentClassName() {
+
+        const { role, behaviour } = this.state;
+        const names = [ "team-update" ];
+        if ( role ) { names.push ( "role-chosen" ); }
+        if ( behaviour ) { names.push( "behaviour-chosen" ); }
+        return names.join( " " );
+        
+    }
     render() {
 
-        return <div className="team-update">
+        return <div className={this.componentClassName()}>
 
             <h1>
                 
@@ -156,7 +167,7 @@ class TeamUpdate extends Component {
                 <NavButtonLeft to="/team" text="Back"><GoLeft /></NavButtonLeft>
 
             </h1>
-            <div className="picker">
+            <div className="picker role-picker">
 
                 <h2>Role</h2>
                 <Menu   items={ roles } 
@@ -166,7 +177,7 @@ class TeamUpdate extends Component {
                         decorate={ decorateMenuClasses } />
                 
             </div>
-            { !this.state.role ? null : <div className="picker">
+            { !this.state.role ? null : <div className="picker behaviour-picker">
 
                 <h2>Behaviour</h2>
                 <Menu   items={ this.state.behaviours }

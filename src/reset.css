@@ -1,4 +1,6 @@
-.experimenz-ots {
+.experimenz-ots,
+.experimenz-ots td,
+.experimenz-ots th {
 
     font-size: 10pt;
     text-align: initial;

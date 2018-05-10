@@ -95,11 +95,6 @@
     display: none;
 
 }
-.experimenz-ots .team-update .chosen input+.choice-content .cancel {
-
-    display: block;
-
-}
 .experimenz-ots .team-update .picker {
 
     display: flex;
@@ -122,6 +117,7 @@
 .experimenz-ots .team-update .one-of-option {
 
     display: inline-block;
+    padding: 5px;
 
 }
 .experimenz-ots .team-update .one-of-option .content {
@@ -137,8 +133,8 @@
 }
 .experimenz-ots .team-update .one-of-option .content {
 
-    fill: #EEE;
-    transform: scale(0.5);
+    fill: #CCC;
+    transform: scale(0.7);
 
 }
 .experimenz-ots .team-update .one-of-option .content:hover,
@@ -176,6 +172,7 @@
     padding: 0 5px;
     min-width: 2em;
     text-align: right;
+    line-height: 2em;
 
 }
 .experimenz-ots .team-update .score-diff .down::before {
@@ -190,20 +187,17 @@
     padding: 0 5px;
     min-width: 2em;
     text-align: right;
+    line-height: 2em;
 
 }
 .experimenz-ots .team-update .score-diff .up::before {
 
     content: "+ ";
-    
+
 }
 .experimenz-ots .team-update .score-result {
 
     min-width: 3em;
     text-align: right;
-}
-.experimenz-ots .team-update .score-result span::before {
-
-    content: "= ";
 
 }
