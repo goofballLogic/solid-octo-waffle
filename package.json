@@ -31,7 +31,7 @@
     "react-svg-loader": "^2.1.0",
     "recharts": "^1.0.0-beta.10",
     "style-loader": "^0.21.0",
-    "tc2-react-good-bad-tracker": "0.0.2",
+    "tc2-react-good-bad-tracker": "0.0.3",
     "tc2-react-time-series-graph": "0.0.13"
   },
   "private": true

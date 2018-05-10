@@ -1,0 +1,84 @@
+
+.experimenz-ots .team-update .choice input {
+
+    position: absolute;
+    left: -2000px;
+
+}
+.experimenz-ots .team-update .choice-content {
+
+    padding: 10px;
+    max-width: 1000px;
+    margin: 0;
+    max-height: 500px;
+    transition: margin-left 0.3s 0.3s, 
+                max-height 0.3s,
+                margin-top 0.3s;
+
+}
+.experimenz-ots .team-update .choice-content .cancel {
+
+    display: none;
+
+}
+.experimenz-ots .team-update .choice-content:hover {
+
+    background-color: #EEE;
+
+}
+.experimenz-ots .team-update .choice-content > * {
+
+    display: block;
+    max-width: 700px;
+
+}
+.experimenz-ots .team-update .choice-content .btn {
+
+    margin-left: 0;
+
+}
+.experimenz-ots .team-update .chosen input+.choice-content {
+
+    margin-left: -2000px;
+    max-height: 0;
+    margin-top: -20px;
+    transition: margin-left 0.3s, 
+                max-height 0.3s 0.3s,
+                margin-top 0.3s 0.3s;
+
+}
+.experimenz-ots .team-update .chosen input:checked+.choice-content {
+
+    margin: 0;
+    max-height: 500px;
+    
+}
+.experimenz-ots .team-update .chosen input+.choice-content .choose {
+
+    display: none;
+
+}
+.experimenz-ots .team-update .chosen input+.choice-content .cancel {
+
+    display: block;
+
+}
+.experimenz-ots .team-update .picker {
+
+    display: flex;
+    flex-direction: row;
+    
+}
+.experimenz-ots .team-update .picker > * {
+
+    flex: 1;
+
+}
+.experimenz-ots .team-update .picker h2 {
+
+    flex: 0;
+    margin: 10px 0 0 0;
+    flex-basis: auto;
+    width: 100px;
+
+}
