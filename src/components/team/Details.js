@@ -1,4 +1,4 @@
-import React, { PureComponent } from "react";
+import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import {
 
@@ -65,7 +65,7 @@ const Details = ( { data, events, series, selectWhen } ) => <article className="
 
 </article>;
 
-class DetailsContainer extends PureComponent {
+class DetailsContainer extends Component {
 
     constructor() {
 
@@ -76,9 +76,17 @@ class DetailsContainer extends PureComponent {
 
     selectWhen( when ) {
 
-
         const selected = this.state.selected || [];
-        if( !~selected.indexOf( when ) ) { selected.push( when ); }
+        const selectedIndex = selected.indexOf( when );
+        if( !~selectedIndex ) { 
+            
+            selected.push( when );
+        
+        } else {
+
+            selected.splice( selectedIndex, 1 );
+            
+        }
         this.setState( { selected } );
 
     }

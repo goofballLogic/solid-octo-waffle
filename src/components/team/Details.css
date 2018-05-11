@@ -1,26 +1,52 @@
-.team-details .graph-enhancements {
+.experimenz-ots .team-details .graph-enhancements {
 
     display: flex;
 
 }
-.team-details .graph-enhancements > * {
+.experimenz-ots .team-details .graph-enhancements > * {
 
     flex-basis: 450px;
     flex-wrap: wrap;
 
 }
-.experimenz-ots .event-listing table {
+.experimenz-ots .team-details .graph-enhancements .streaks td {
+
+    white-space: nowrap;
+
+}
+.experimenz-ots .team-details .graph-enhancements .streaks .visual-sizer {
+
+    min-width: 75px;
+
+}
+.experimenz-ots .team-details .event-listing {
+
+    margin-left: 20px;
+
+}
+.experimenz-ots .team-details .event-listing > table {
 
     border-collapse: collapse;
     min-width: 450px;
+    width: 100%;
 
 }
-.experimenz-ots .event-listing .graph td,
-.experimenz-ots .event-listing .graph th {
+.experimenz-ots .team-details .event-listing .graph td,
+.experimenz-ots .team-details .event-listing .graph th {
 
     padding: 10px 10px;
     line-height: 2em;
     border: solid 1px #CCC;
+    line-height: 1.5;
+
+}
+.experimenz-ots .team-details .event-listing .graph td {
+
     white-space: nowrap;
+    
+}
+.experimenz-ots .team-details .event-listing .graph .detail td:last-of-type {
+
+    white-space: normal;
 
 }

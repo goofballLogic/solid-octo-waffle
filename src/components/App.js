@@ -25,7 +25,6 @@ class App extends Component {
 
     render() {
         
-        console.log( "Render" );
         return <Router>
 
             { console.log( this.state.error, this.state.info ) || this.state.error
@@ -41,7 +40,7 @@ class App extends Component {
                 </div>
                 : <div className="experimenz-ots">
 
-                    <Route exact path="/team/update" component={ () => <TeamUpdate {...this.props} /> } />
+                    <Route exact path="/team/update" component={ ( props ) => <TeamUpdate {...this.props} {...props} saveUpdates={this.props.handleDispatchUpdates} /> } />
                     <Route exact path="/team/kiosk" component={ () => <TeamDashboard kiosk {...this.props} /> } />
                     <Route exact path="/team" component={ () => <TeamDashboard {...this.props} /> } />
                     <Route exact path="/kiosk" component={ () => <SummaryDashboard kiosk {...this.props} /> } />

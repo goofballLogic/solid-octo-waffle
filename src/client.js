@@ -10,9 +10,34 @@ function renderBySelector( selector, data ) {
     const container = document.querySelector( selector );
     if ( !container ) { throw new Error( "No container found: " + selector ); }
     if ( !data ) { throw new Error( "No data supplied" ); }
-    if ( !data.team ) { throw new Error( "Missing data prop: team" ); }
-    if ( !data.events ) { throw new Error( "Missing data prop: events" ); }
-    render( <App {...data} />, container );
+    const missing = [ "team", "events", "behaviours", "behaviourTemplate", "roles", "roleTemplate" ]
+        .filter( propName => !data[ propName ] );
+    if ( missing.length ) {
+
+        throw new Error( "Missing data: " + missing.join( ", " ) );
+
+    }
+    function handleDispatchUpdates( updates ) {
+
+        return new Promise( ( resolve, reject ) => {
+
+            document.body.dispatchEvent( new CustomEvent( "OTS.updates", {
+
+                detail: { 
+                
+                    updates,
+                    resolve,
+                    reject
+
+                }
+
+            } ) );
+            setTimeout( () => reject( new Error( "Failed to save" ) ), 10000 );
+
+        } );
+
+    }
+    render( <App {...data} handleDispatchUpdates={ handleDispatchUpdates } />, container );
 
 }
 

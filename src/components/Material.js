@@ -12,7 +12,7 @@ export const FloatNavButton = ( { text, to, children } ) => <Link to={to} title=
 
 </Link>;
 
-export const ButtonRight = ( { text, children } ) => <div className="btn primary">
+export const ButtonRight = ( { text, children, onClick } ) => <div className="btn primary" onClick={onClick}>
 
     <div className="btn__content">
 
