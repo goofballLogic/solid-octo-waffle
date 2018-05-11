@@ -12,10 +12,10 @@ import GoLeft from "../svg/go-left.svg";
 
 const maybeLatest = events => [ ...events ].sort( 
     
-    ( a, b ) => ( new Date( a.when ).valueOf() - new Date( b.when ).valueOf() ) 
+    ( a, b ) => ( new Date( b.when ).valueOf() - new Date( a.when ).valueOf() ) 
 
 )[ 0 ];
-const maybeFormat = ( x, pattern ) => x ? format( x, pattern ) : "none";
+const maybeFormat = ( x, pattern ) => console.log( x ) || x ? format( x.when, pattern ) : "none";
 
 const TeamDashboard = ( { kiosk, events, team } ) => <div className={ `team-dashboard${kiosk ? " kiosk" : ""}` }>
 
@@ -28,9 +28,9 @@ const TeamDashboard = ( { kiosk, events, team } ) => <div className={ `team-dash
     <h2>
 
         Last updated: { maybeFormat( maybeLatest( events ), "dddd [the] Do [of] MMMM YYYY" ) }
-        <NavButton to="/team/update" text="Update" />
-    
+        
     </h2>
+    <NavButton to="/team/update" text="Update" />
     <KioskControl kiosk={ kiosk } big="/team/kiosk" small="/team" />
     <Details series={ team } data={ accumulate( events ) } events={ events } />
 

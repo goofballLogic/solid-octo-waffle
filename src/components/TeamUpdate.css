@@ -89,9 +89,10 @@
     margin-left: -2000px;
     max-height: 0;
     margin-top: -20px;
-    transition: margin-left 0.3s, 
+    /*transition: margin-left 0.3s, 
                 max-height 0.3s 0.3s,
-                margin-top 0.3s 0.3s;
+                margin-top 0.3s 0.3s;*/
+    transition: none;
 
 }
 .experimenz-ots .team-update .chosen input:checked+.choice-content {

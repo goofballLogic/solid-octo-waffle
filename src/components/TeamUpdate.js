@@ -170,7 +170,16 @@ class TeamUpdate extends Component {
                 <div>
                 
                     <Scoring    target={ this.state.behaviour }
-                                scorees={ team.map( x => ( { ...x, score: 0 } ) ) }
+                                scorees={ team.filter( x => 
+                                    
+                                    ~x.roles.indexOf( this.state.role.id )
+                                
+                                ).map( x => ( { 
+                                    
+                                    score: 0, 
+                                    ...x 
+                                
+                                } ) ) }
                                 selected={ this.selectedBehaviourScores() }
                                 handleChange={ this.handleScoringChange.bind( this ) } />
                    

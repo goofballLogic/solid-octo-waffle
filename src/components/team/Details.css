@@ -5,8 +5,7 @@
 }
 .experimenz-ots .team-details .graph-enhancements > * {
 
-    flex-basis: 450px;
-    flex-wrap: wrap;
+    flex: 1;
 
 }
 .experimenz-ots .team-details .graph-enhancements .streaks td {
@@ -24,6 +23,11 @@
     margin-left: 20px;
 
 }
+.experimenz-ots .team-details .event-listing .swatch {
+
+    margin-top: 0.2em;
+    
+}
 .experimenz-ots .team-details .event-listing > table {
 
     border-collapse: collapse;
@@ -38,12 +42,10 @@
     line-height: 2em;
     border: solid 1px #CCC;
     line-height: 1.5;
-
-}
-.experimenz-ots .team-details .event-listing .graph td {
-
     white-space: nowrap;
-    
+    overflow: hidden;
+    text-overflow: ellipsis;
+
 }
 .experimenz-ots .team-details .event-listing .graph .detail td:last-of-type {
 
