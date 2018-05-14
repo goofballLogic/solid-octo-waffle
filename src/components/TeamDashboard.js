@@ -15,7 +15,7 @@ const maybeLatest = events => [ ...events ].sort(
     ( a, b ) => ( new Date( b.when ).valueOf() - new Date( a.when ).valueOf() ) 
 
 )[ 0 ];
-const maybeFormat = ( x, pattern ) => console.log( x ) || x ? format( x.when, pattern ) : "none";
+const maybeFormat = ( x, pattern ) => x ? format( x.when, pattern ) : "none";
 
 const TeamDashboard = ( { kiosk, events, team } ) => <div className={ `team-dashboard${kiosk ? " kiosk" : ""}` }>
 

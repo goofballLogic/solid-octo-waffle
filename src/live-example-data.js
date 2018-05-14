@@ -5,10 +5,10 @@
 */
 export const team = [
     
-    { "name": "Andrew", "id": "asg", "color": "0,116,217" },
-    { "name": "Dirk", "id": "dr", "color": "61,153,112" },
-    { "name": "Omer", "id": "oc", "color": "46, 204, 64" }, // 1,255,112
-    { "name": "Imran", "id": "im", "color": "127,219,255"}
+    { "name": "Andrew", "id": "asg", "color": "0,116,217", "roles": [ "tar"] },
+    { "name": "Dirk", "id": "dr", "color": "61,153,112", "roles": [ "own" ] },
+    { "name": "Omer", "id": "oc", "color": "46, 204, 64", "roles": [ "bar" ] }, // 1,255,112
+    { "name": "Imran", "id": "im", "color": "127,219,255", "roles": [ "tar" ] }
 
 ];
 /*
@@ -50,22 +50,32 @@ export const events = [
 */
 export const roles = [ { 
 
-    id: "role1",
-    title: "Get stuff done in time",
-    specifics: "We won't commit to things we can't deliver so that we get everything prioritised finished on time. \"End of sprint\" means the end of Friday (not over the weekend!)",
-    measurement: "Were all commits Done before the end of the sprint?",
+    id: "bar",
+    title: "Business architect",
+    description: "The business architect is repsonsible for ensuring business rules are coherent and appropriate.",
+    behaviours: [ 
+        { id: "leader", weight: 5 },
+        { id: "analytical", weight: 10 },
+        { id: "biz", weight: 10 }
+    ]
 },
 { 
-    id: "role2",
-    title: "Focus on top priorities first",
-    specifics: "Get it working first. Refine the solution as you have time available. Define test plans and implement basic functionality during the first half of the sprint.",
-    measurement: "Was basic functionality and test planning complete by Wednesday?"
+    id: "tar",
+    title: "Technical architect",
+    description: "The technical architect should ensure that technical decisions correctly balance agility, robustness and time-to-market.",
+    behaviours: [ 
+        { id: "leader", weight: 5 },
+        { id: "analytical", weight: 10 },
+        { id: "tech", weight: 10 }
+    ]
 },
 { 
-    id: "role3",
-    title: "Keep the app fully running at all times",
-    specifics: "We should be able to pull the latest code without fear of it breaking our development environment.",
-    measurement: "Did all our code pushes go through without breaking CI or another team member's build/environment?"
+    id: "own",
+    title: "Business owner",
+    description: "The business owner should ensure that the experiment is being correctly targetting the major sources of uncertainty about the business model.",
+    behaviours: [
+        { id: "leader", weight: 25 }
+    ]
 } ];
 /*
 
@@ -80,64 +90,35 @@ export const roleTemplate = [ "title", "specifics", "measurement" ];
 */
 export const behaviours = [ {
 
-    id: "behaviour1",
-    roleId: "role1",
-    title: "Role 1 Behaviour 1",
-    description: "Ut sed quam sed purus fermentum imperdiet non ac quam. Morbi pellentesque gravida vehicula. Suspendisse libero metus, bibendum ut nisi ut, consequat condimentum urna.",
-    upScore: 2,
-    downScore: 2
-
-}, {
-
-    id: "behaviour2",
-    roleId: "role1",
-    title: "Role 1 Behaviour 2 which has a long title which might not fit in",
-    description: "Maecenas metus diam, luctus non pulvinar ac, rhoncus et eros. Donec eleifend ex nisl, a laoreet dolor viverra varius.",
-    upScore: 2,
-    downScore: 1
-
-}, {
-
-    id: "behaviour3",
-    roleId: "role1",
-    title: "Role 1 Behaviour 3",
-    description: "Duis odio velit, mollis id dolor a, maximus vehicula justo.",
-    upScore: 3
-
-}, {
-
-    id: "behaviour4",
-    roleId: "role2",
-    title: "Role 2 Behaviour 1",
-    description: "Fusce hendrerit felis sit amet risus aliquam luctus.",
+    id: "leader",
+    title: "Leader",
+    description: "Being an inspiring leader for the team",
     upScore: 1,
     downScore: 1
 
 }, {
 
-    id: "behaviour5",
-    roleId: "role2",
-    title: "Role 2 Behaviour 2 (a negative behaviour)",
-    description: "Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.",
+    id: "analytical",
+    title: "Analytical",
+    description: "Having an analytical mindset",
+    upScore: 1,
     downScore: 1
 
 }, {
 
-    id: "behaviour6",
-    roleId: "role3",
-    title: "Role 3 Behaviour 1 (discouraged behaviour)",
-    description: "Sed in placerat mi, sit amet pellentesque magna. Vestibulum malesuada lacus non consectetur suscipit.",
+    id: "biz",
+    title: "Business mindedness",
+    description: "Having a business-oriented mindset",
     upScore: 1,
-    downScore: 2
+    downScore: 1
 
 }, {
 
-    id: "behaviour7",
-    roleId: "role3",
-    title: "Role 3 Behaviour 2",
-    description: "Ut quis elit diam. Duis ultricies hendrerit libero vitae sodales. Vestibulum cursus tortor pulvinar ipsum pharetra faucibus. Nam et purus eu augue condimentum volutpat sed sed neque. Donec sodales feugiat laoreet.",
-    upScore: 2,
-    downScore: 2
+    id: "tech",
+    title: "Being technology savvy",
+    description: "Thinking through the technological implications",
+    upScore: 1,
+    downScore: 1
 
 } ];
 /*
@@ -148,7 +129,8 @@ export const behaviours = [ {
 export const behaviourTemplate = [ 
     
     "title", 
-    "description",
+    "description"
+    /*,
     { 
                 
         "key": "up",
@@ -162,5 +144,6 @@ export const behaviourTemplate = [
         "className": "score {key} {truthiness}"
         
     } 
+    */
 
 ];

@@ -6,12 +6,6 @@
     padding: 15px;
 
 }
-.experimenz-ots .pending-changes h3 {
-
-    margin: 0;
-    line-height: 2;
-
-}
 .experimenz-ots .pending-changes ul {
 
     margin: 10px 0;
@@ -46,4 +40,28 @@
 
     margin: 0;
     
+}
+
+.experimenz-ots .pending-changes label {
+
+    display: flex;
+
+}
+.experimenz-ots .pending-changes h3 {
+
+    margin: 0;
+    line-height: 2;
+    flex: 0;
+    align-self: flex-end;
+
+}
+.experimenz-ots .pending-changes input {
+
+    border: none;
+    border-bottom: solid 1px black;
+    line-height: 2;
+    margin-left: 10px;
+    font-size: 1.1em;
+    flex: 1;
+
 }

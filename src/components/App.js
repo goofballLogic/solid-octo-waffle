@@ -1,9 +1,11 @@
 import React, { Component } from "react";
-import { hot } from "react-hot-loader";
+import { hot, setConfig } from "react-hot-loader";
 import { MemoryRouter as Router, Route } from "react-router-dom";
 import SummaryDashboard from "./SummaryDashboard";
 import TeamDashboard from "./TeamDashboard";
 import TeamUpdate from "./TeamUpdate";
+
+setConfig( { logLevel: "debug" } );
 
 import "./App.css";
 
@@ -54,4 +56,4 @@ class App extends Component {
 
 }
 
-export default hot(module)(App);
+export default hot( module )( App );

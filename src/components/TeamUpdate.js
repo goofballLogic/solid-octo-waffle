@@ -4,6 +4,7 @@ import { Menu, Scoring } from "tc2-react-good-bad-tracker";
 import { NavButtonLeft } from "./Material";
 import GoLeft from "../svg/go-left.svg";
 import PendingChanges from "./PendingChanges";
+import { hot } from "react-hot-loader";
 
 import "./TeamUpdate.css";
 
@@ -22,11 +23,30 @@ function decorateMenuClasses( className ) {
 }
 const today = () => ( new Date() ).toISOString().substring( 0, 10 );
 class TeamUpdate extends Component {
-    
+
     constructor() {
 
         super();
         this.state = { date: today() };
+
+    }
+    static getDerivedStateFromProps( nextProps, prevState ) {
+
+        const team = nextProps.team.map( member => ( {
+
+            ...member,
+            score: nextProps.events.filter( evt =>
+
+                evt.id === member.id
+
+            ).reduce( ( sum, x ) =>
+
+                sum + x.score
+
+            , 0 )
+
+        } ) );
+        return { ...prevState, team };
 
     }
     handleDateChange( e ) {
@@ -39,9 +59,9 @@ class TeamUpdate extends Component {
         const { behaviours } = this.props;
         if ( this.state.role && role ) { return e.preventDefault(); }
         const roleBehaviours = role ? behaviours.filter( x => x.roleId === role.id ) : undefined;
-        this.setState( { 
+        this.setState( {
 
-            role, 
+            role,
             behaviours: roleBehaviours,
             behaviour: undefined
 
@@ -52,6 +72,27 @@ class TeamUpdate extends Component {
 
         if ( this.state.behaviour && behaviour ) { return e.preventDefault(); }
         this.setState( { behaviour } );
+
+    }
+    handleBehaviourChange2( e, selected ) {
+
+        if ( this.state.behaviour2 && selected ) { return e.preventDefault(); }
+        const { roles } = this.props;
+        if ( !selected ) {
+
+            this.setState( { behaviour2: selected } );
+
+        } else {
+
+            const scores = roles.filter( role =>
+
+                role.behaviours.find( behaviour => behaviour.id === selected.id )
+
+            ).map( x => ( { ...x, upScore: 1, downScore: 1 } ) );
+            const behaviour2 = { ...selected, scores };
+            this.setState( { behaviour2 } );
+
+        }
 
     }
     handleScoringChange( scores ) {
@@ -68,7 +109,23 @@ class TeamUpdate extends Component {
 
         }
         this.setState( { pending } );
-        
+
+    }
+    handleScoringChange2( scores ) {
+
+        const { behaviour2 } = this.state;
+        const pending = this.state.pending || {};
+        if( scores && Object.values( scores ).filter( x => x ).length ) {
+
+            pending[ behaviour2.id ] = JSON.parse( JSON.stringify( scores ) );
+
+        } else {
+
+            delete pending[ behaviour2.id ];
+
+        }
+        this.setState( { pending } );
+
     }
     selectedBehaviourScores() {
 
@@ -79,8 +136,8 @@ class TeamUpdate extends Component {
     }
     handleSave( e ) {
 
-        const { pending, date = today() } = this.state;
-        const { behaviours, team, saveUpdates, history } = this.props;
+        const { pending, team, date = today() } = this.state;
+        const { behaviours, saveUpdates, history, roles } = this.props;
         const updates = [];
         for( const behaviourId of Object.keys( pending ) ) {
 
@@ -91,10 +148,28 @@ class TeamUpdate extends Component {
 
                 const user = team.find( u => u.id === userId );
                 if ( !user ) { console.error( "User missing", userId, team ); continue; }
+                const userBehaviourRoles = user.roles.map( roleId =>
+
+                    roles.find( role => role.id === roleId )
+
+                ).filter( role =>
+
+                    role.behaviours.find( b => b.id === behaviourId )
+
+                );
+                const userBehaviourWeight = userBehaviourRoles.map( role =>
+
+                    role.behaviours.find( b => b.id === behaviourId )
+
+                ).map( x =>
+
+                    x ? x.weight : 0
+
+                ).reduce( ( a, b ) => a + b );
                 const isUp = pendingForBehaviour[ userId ] === "up";
                 const isDown = pendingForBehaviour[ userId ] === "down";
-                const score = isUp ? behaviour.upScore : isDown ? -behaviour.downScore : undefined;
-                const description = `${user.name} ${isDown ? "did not succeed" : "succeeded" }: ${behaviour.title}`;
+                const score = isUp ? userBehaviourWeight : isDown ? -userBehaviourWeight : undefined;
+                const description = `${user.name} ${isDown ? "did not succeed" : "succeeded" }: ${behaviour.title} - ${userBehaviourRoles.map( x => x.title ).join( ", " )}`;
                 updates.push( { when: date, behaviour: behaviourId, user: userId, score, description } );
 
             }
@@ -115,44 +190,102 @@ class TeamUpdate extends Component {
         if ( role ) { names.push ( "role-chosen" ); }
         if ( behaviour ) { names.push( "behaviour-chosen" ); }
         return names.join( " " );
-        
+
+    }
+    calculateDelta( selected, targetScore, id ) {
+
+        const { team } = this.state;
+        if ( selected === "-" ) { return undefined; }
+        const teamMember = team.find( t => t.id === id );
+        if ( !~teamMember.roles.indexOf( targetScore.id ) ) { return undefined; }
+        const deltaBehaviour = targetScore.behaviours.find( behaviour => behaviour.id === this.state.behaviour2.id );
+        return selected === "up" ? deltaBehaviour.weight : -deltaBehaviour.weight;
+
     }
     render() {
 
-        const hasPending = this.state.pending && ( Object.keys( this.state.pending ).length > 0 );
-        const { behaviours, behaviourTemplate, team, roles, roleTemplate } = this.props;
+        const { behaviours, behaviourTemplate, roles, roleTemplate } = this.props;
+        const { team, pending, date, behaviour2 } = this.state;
+        const hasPending = pending && ( Object.keys( pending ).length > 0 );
+        const scorees = behaviour2 && team.filter( x =>
+
+            x.roles.find( roleId =>
+
+                roles.find( role =>
+
+                    role.id === roleId
+
+                ).behaviours.find( b =>
+
+                    b.id === behaviour2.id
+
+                )
+
+            )
+
+        );
         return <div className={this.componentClassName()}>
             { this.state.saving ? <div className="team-update-saving">Saving...</div> : null }
             <h1>
-                
+
                 Assess team performance
-                <NavButtonLeft to="/team" text="Back"><GoLeft /></NavButtonLeft>
+                <NavButtonLeft to="/team" text="Cancel"><GoLeft /></NavButtonLeft>
 
-            </h1> 
-            <div className={`pending-events${hasPending ? " pending-events-populated" : "" }`}>
+            </h1>
+            <section className="scoring-area">
 
-                <PendingChanges pending={ this.state.pending } behaviours={ behaviours } handleSave={ this.handleSave.bind( this )} />
-                
-            </div>
-            <div className="picker">
+                <div className={`pending-events pending-events-populated" }`}>
 
-                <h2>When</h2>
-                <div>
+                    <PendingChanges     pending={ pending }
+                                        behaviours={ behaviours }
+                                        handleSave={ this.handleSave.bind( this )}
+                                        handleDateChange={ this.handleDateChange.bind( this )}
+                                        date={ date || today() } />
 
-                    <input type="date" onChange={this.handleDateChange.bind( this )} value={this.state.date || today()} />
+                </div>
+                <div className="behaviour-assessment">
+
+                    <Menu   items={ behaviours }
+                            template={ behaviourTemplate }
+                            onChange={ this.handleBehaviourChange2.bind( this ) }
+                            chosen={ behaviour2 }
+                            decorate={ decorateMenuClasses } />
+                    {
+                        !behaviour2 ? <div /> : scorees.length
+
+                            ? <Scoring  target={ behaviour2 }
+                                        scorees={ scorees }
+                                        handleChange={ this.handleScoringChange2.bind( this ) }
+                                        calculateDelta={ this.calculateDelta.bind( this ) } />
+
+                            : <div>Nobody is assigned to a role with this behaviour</div>
+
+                    }
 
                 </div>
 
-            </div>
-            <div className="picker role-picker">
+
+            </section>
+
+        </div>;
+
+    }
+
+}
+
+export default hot( module )( TeamUpdate );
+
+/*
+
+ <div className="picker role-picker">
 
                 <h2>Role</h2>
-                <Menu   items={ roles } 
+                <Menu   items={ roles }
                         template={ roleTemplate }
                         onChange={ this.handleRoleChange.bind( this ) }
                         chosen={ this.state.role }
                         decorate={ decorateMenuClasses } />
-                
+
             </div>
             { !this.state.role ? null : <div className="picker behaviour-picker">
 
@@ -165,32 +298,26 @@ class TeamUpdate extends Component {
 
             </div> }
             { !this.state.behaviour ? null : <div className="picker">
-            
+
                 <h2>Assessment</h2>
                 <div>
-                
+
                     <Scoring    target={ this.state.behaviour }
-                                scorees={ team.filter( x => 
-                                    
+                                scorees={ team.filter( x =>
+
                                     ~x.roles.indexOf( this.state.role.id )
-                                
-                                ).map( x => ( { 
-                                    
-                                    score: 0, 
-                                    ...x 
-                                
+
+                                ).map( x => ( {
+
+                                    score: 0,
+                                    ...x
+
                                 } ) ) }
                                 selected={ this.selectedBehaviourScores() }
                                 handleChange={ this.handleScoringChange.bind( this ) } />
-                   
+
                 </div>
 
             </div> }
 
-        </div>;
-
-    }
-
-}
-
-export default TeamUpdate;
+*/

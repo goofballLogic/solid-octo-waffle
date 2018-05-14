@@ -32,8 +32,7 @@
 }
 .experimenz-ots .graph .streaks {
 
-    padding-left: 60px;
-
+    padding-left: 30px;
 
 }
 .experimenz-ots .graph .streaks * {
@@ -135,5 +134,22 @@
 .experimenz-ots .garph .significant {
 
     font-weight: bold;
+
+}
+.experimenz-ots .graph {
+
+    padding: 10px;
+    background-color: white;
+    border-radius: 5px;
+
+}
+.experimenz-ots .graph .recharts-responsive-container {
+
+    margin: 20px 20px 0 -20px;
+
+}
+.experimenz-ots .graph-enhancements .event-listing .graph {
+
+    padding: 20px;
 
 }

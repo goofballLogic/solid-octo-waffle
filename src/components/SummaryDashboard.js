@@ -29,8 +29,4 @@ const SummaryDashboard = ( { kiosk, team, events } ) =>
 
 export default SummaryDashboard;
 
-if( module.hot ) {
-
-    module.hot.accept();
-    
-}
+if( module.hot ) { module.hot.accept(); }

@@ -16,9 +16,11 @@
     max-width: 1000px;
     margin: 0;
     max-height: 500px;
-    transition: margin-left 0.3s 0.3s, 
+    opacity: 1;
+    /*transition: margin-left 0.3s 0.3s, 
                 max-height 0.3s,
-                margin-top 0.3s;
+                margin-top 0.3s;*/
+    transition: all 0.2s;
 
 }
 .experimenz-ots .team-update .choice-content .cancel {
@@ -86,20 +88,29 @@
 }
 .experimenz-ots .team-update .chosen input+.choice-content {
 
-    margin-left: -2000px;
+    overflow: hidden;
+    /* margin-left: -2000px; */
     max-height: 0;
     margin-top: -20px;
     /*transition: margin-left 0.3s, 
-                max-height 0.3s 0.3s,
-                margin-top 0.3s 0.3s;*/
+                max-height 0.3s 0.1s linear,
+                margin-top 0.1s 0.4s;*/
+    /*transition: all 0.2s;*/
+    /*transition: none;*/
+    transition: opacity 0.1s, 
+                max-height 0.3s 0.1s,
+                margin-top 0.3s 0.1s;
     transition: none;
+    opacity: 0;
 
 }
 .experimenz-ots .team-update .chosen input:checked+.choice-content {
 
     margin: 0;
+    padding-top: 0;
     max-height: 500px;
-    
+    opacity: 1;
+
 }
 .experimenz-ots .team-update .chosen input+.choice-content .choose {
 
@@ -176,34 +187,29 @@
     padding: 0 5px;
 
 }
-.experimenz-ots .team-update .score-diff .down {
+.experimenz-ots .team-update .score-diff .down,
+.experimenz-ots .team-update .score-diff .up {
 
-    display: block;
-    background-color: var(--background-color-down);
+    display: inline-block;
     padding: 0 5px;
     min-width: 2em;
     text-align: right;
     line-height: 2em;
 
 }
-.experimenz-ots .team-update .score-diff .down::before {
+.experimenz-ots .team-update .score-diff .down {
 
-    content: "- ";
+    background-color: var(--background-color-down);
 
 }
 .experimenz-ots .team-update .score-diff .up {
 
-    display: block;
     background-color: var(--background-color-up);
-    padding: 0 5px;
-    min-width: 2em;
-    text-align: right;
-    line-height: 2em;
 
 }
 .experimenz-ots .team-update .score-diff .up::before {
 
-    content: "+ ";
+    content: "+";
 
 }
 .experimenz-ots .team-update .score-result {
@@ -215,32 +221,8 @@
 
 .experimenz-ots .team-update .pending-events {
 
-    float: right;
-    width: 300px;
-    margin-left: 20px;
+    width: 300px;   
     height: 100%;
-
-}
-.experimenz-ots .team-update .pending-events .pending-changes {
-
-    max-height: 0;
-    overflow: hidden;
-    opacity: 0;
-    transition: all 0.3s;
-
-}
-.experimenz-ots .team-update .pending-events-populated .pending-changes {
-
-    max-height: 1000px;
-    opacity: 1;
-
-}
-.experimenz-ots .team-update input {
-
-    border: none;
-    border-bottom: solid 1px black;
-    margin: 5px 10px 10px 10px;
-    font-size: 1.5em;
 
 }
 .experimenz-ots .team-update {
@@ -260,5 +242,56 @@
     font-size: 3em;
     text-align: center;
     padding: 50px;
+
+}
+.experimenz-ots .team-update .choice-content {
+
+    width: 100%;
+
+}
+.experimenz-ots .team-update .choices {
+
+    margin-left: -10px;
+
+}
+.experimenz-ots .team-update .menu {
+
+    display: block;
+    
+}
+.experimenz-ots .team-update .behaviour-assessment th,
+.experimenz-ots .team-update .behaviour-assessment td {
+
+    text-align: center;
+    
+}
+.experimenz-ots .team-update .behaviour-assessment th {
+
+    padding: 5px;
+    border-bottom: solid 1px black;
+
+}
+.experimenz-ots .team-update .behaviour-assessment th:nth-child(1),
+.experimenz-ots .team-update .behaviour-assessment th:nth-child(2),
+.experimenz-ots .team-update .behaviour-assessment th:last-child
+ {
+
+    border-bottom: none;
+
+}
+.experimenz-ots .team-update .behaviour-assessment .neither::before {
+
+    content: "·";
+
+}
+.experimenz-ots .team-update .scoring-area {
+
+    display: flex;
+
+}
+.experimenz-ots .team-update .scoring-area .behaviour-assessment {
+
+    flex: 1;
+    margin-left: 30px;
 
 }

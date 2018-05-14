@@ -31,8 +31,7 @@ module.exports = [ {
     externals: shared.externals,
     plugins: [
     
-        new webpack.NamedModulesPlugin(),
-        new webpack.HotModuleReplacementPlugin()
+        new webpack.NamedModulesPlugin()
     
     ]
 
